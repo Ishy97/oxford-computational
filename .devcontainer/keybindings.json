@@ -1,0 +1,109 @@
+// Custom keybindings that are more RStudio-like and work better in browsers.
+// Paste the below into your codespace's `keybindings.json`.
+
+[
+    // New keybinding for close tab, since CTRL + W is used by the browser
+    {
+        "key": "ctrl+alt+w",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    
+    // Toggle comment
+    {
+        "key": "ctrl+shift+c",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+7",
+        "command": "-editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // Insert assignment operator 
+    // (using . instead of - because the latter confuses Chrome)
+    {
+        "key": "alt+.",
+        "command": "editor.action.insertSnippet",
+        "args": { "snippet": " <- " },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+.",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": " <- " },
+        "when": "terminalFocus"
+      },
+    
+    // Insert piping operator
+    {
+        "key": "ctrl+shift+m",
+        "command": "editor.action.insertSnippet",
+        "args": { "snippet": " |> " },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": " |> " },
+        "when": "terminalFocus"
+      },
+
+    // Insert r code chunk
+    {
+        "key": "ctrl+alt+i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+            "snippet": "```{r}\n$0\n```"
+        }
+    },
+
+    // Render Quarto document
+    {
+        "key": "ctrl+alt+r",
+        "command": "quarto.renderDocument",
+        "when": "editorTextFocus"
+    },
+
+    // Preview Quarto document
+    {
+        "key": "ctrl+alt+p",
+        "command": "quarto.preview",
+        "when": "editorTextFocus"
+    },
+
+    // Open R help for selection
+    {
+        "key": "ctrl+alt+h",
+        "command": "r.helpPanel.openForSelection"
+    },
+    
+    // Rebind Format Document since it conflicts with Quarto insert code cell
+    {
+        "key": "ctrl+k ctrl+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    
+    // Open settings.json
+    {
+        "key": "ctrl+k s",
+        "command": "workbench.action.openRemoteSettingsFile"
+    },
+    
+    // Open keybindings.json
+    {
+        "key": "ctrl+k k",
+        "command": "workbench.action.openGlobalKeybindingsFile"
+    }
+]
